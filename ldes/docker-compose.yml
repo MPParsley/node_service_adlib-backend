@@ -11,7 +11,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ldes-postgres-data:/var/lib/postgresql/data
+      - ldes-postgres-data:/var/lib/postgresql
     networks:
       - ldes-network
     healthcheck:
