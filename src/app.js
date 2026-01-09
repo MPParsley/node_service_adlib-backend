@@ -6,7 +6,7 @@ import ArchiefGentMapper from "./lib/mappers/archiefGentMapper";
 import IndustriemuseumMapper from "./lib/mappers/IndustriemuseumMapper";
 import TermenMapper from "./lib/mappers/termenMapper";
 import TentoonstellingMapper from "./lib/mappers/tentoonstellingMapper";
-import Backend from "./lib/Backend";
+import HybridBackend from "./lib/HybridBackend";
 import Utils from './lib/utils.js';
 import Config from "./config/config.js";
 import correlator from "correlation-id";
@@ -88,7 +88,7 @@ function startHva() {
             "checkEuropeanaFlag": checkEuropeanaFlag,
             "correlator": correlator
         };
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         let objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         let objectMapper = new HvAMapper(options);
@@ -109,7 +109,7 @@ function startDmg() {
             "correlator": correlator
         };
         // Create eventstream "objects" of Design Museum Ghent
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         let objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         let objectMapper = new DmgMapper(options);
@@ -130,7 +130,7 @@ function startDmgArchief() {
             "correlator": correlator
         };
         // create eventstream "archief" of Design Museum Gent
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         let objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         let objectMapper = new DmgArchiefMapper(options)
@@ -152,7 +152,7 @@ function startIndustriemuseum() {
             "correlator": correlator
         };
         // Create eventstream "objecten" of Industriemuseum
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         let objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         let objectMapper = new IndustriemuseumMapper(options);
@@ -173,7 +173,7 @@ function startArchiefgent() {
             "correlator": correlator
         };
         // Create eventstream "objecten" of Archief Gent
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         let objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         let objectMapper = new ArchiefGentMapper(options);
@@ -194,7 +194,7 @@ function startStam() {
             "correlator": correlator
         };
         // Create eventstream "personen" of Stam
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         let objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         let objectMapper = new StamMapper(options);
@@ -215,7 +215,7 @@ function startThesaurus() {
             "checkEuropeanaFlag": checkEuropeanaFlag,
             "correlator": correlator
         };
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         const objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         const thesaurusMapper = new TermenMapper(options);
@@ -236,7 +236,7 @@ function startPersonen() {
             "checkEuropeanaFlag": checkEuropeanaFlag,
             "correlator": correlator
         };
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         const objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         const thesaurusMapper = new TermenMapper(options);
@@ -258,7 +258,7 @@ function startTentoonstellingen() {
             "checkEuropeanaFlag": checkEuropeanaFlag,
             "correlator": correlator
         };
-        const backend = new Backend(options);
+        const backend = new HybridBackend(options);
         const objectAdlib = new Adlib(options);
         options["adlib"] = objectAdlib;
         const tentoonstellingsMapper = new TentoonstellingMapper(options);

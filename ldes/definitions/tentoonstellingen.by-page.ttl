@@ -1,0 +1,14 @@
+@prefix ldes: <https://w3id.org/ldes#> .
+@prefix tree: <https://w3id.org/tree#> .
+@prefix server: <http://localhost:9003/> .
+
+server:tentoonstellingen/by-page a tree:Node ;
+    tree:viewDescription [
+        a tree:ViewDescription ;
+        ldes:retentionPolicy [
+            a ldes:DurationAgoPolicy ;
+            tree:value "P1Y"^^<http://www.w3.org/2001/XMLSchema#duration>
+        ] ;
+        tree:fragmentationStrategy () ;
+        tree:pageSize 250
+    ] .

@@ -26,8 +26,41 @@ npm install
 
 Fill in `config.tml` with the password of the Adlib API you want to use.
 
-adlib-backend uses an ORM (Sequelize) to support following databases: Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
+### Storage Backend Options
+
+The adlib-backend supports two storage backends that can be used independently or together:
+
+#### 1. SQL Database (Traditional)
+
+Uses an ORM (Sequelize) to support following databases: Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
 Fill in the connection URI in `config.tml` of the database you want to use. For example: `'sqlite://./eventstream.db'` or `'postgresql://postgres:yourPassword@127.0.0.1:5432'` or `'postgresql://postgres:yourPassword@yourDockerContainer:5432'`
+
+To enable: Set `SQL_ENABLED=true` (default)
+
+#### 2. LDES (Linked Data Event Stream)
+
+Publishes data directly to a LDES server following the [LDES specification](https://semiceu.github.io/LinkedDataEventStreams/). This provides:
+- Standardized linked data event streams
+- Immutable versioning
+- Paginated views for efficient data retrieval
+- Direct consumption by LDES clients
+
+To enable: Set `LDES_ENABLED=true` and configure `LDES_BASE_URL`
+
+**See [docs/LDES_SETUP.md](docs/LDES_SETUP.md) for detailed LDES setup instructions.**
+
+#### Hybrid Mode
+
+Both backends can be enabled simultaneously to run in parallel:
+```bash
+SQL_ENABLED=true
+LDES_ENABLED=true
+```
+
+This is useful for:
+- Gradual migration from SQL to LDES
+- Comparison and validation
+- Maintaining backward compatibility
 
 ## How to add a mapping
 

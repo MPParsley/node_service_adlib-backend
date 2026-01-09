@@ -8,6 +8,12 @@
 [database]
   connectionURI = 'sqlite://./eventstream.db'
 
+[ldes]
+  baseUrl = 'http://localhost:9003'
+  timeout = 30000
+  retryAttempts = 3
+  retryDelay = 1000
+
 [redis]
   connectionURI = 'redis://localhost:6379'
 
